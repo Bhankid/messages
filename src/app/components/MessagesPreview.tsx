@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import { Star, Search, ThreeDotsVertical } from "react-bootstrap-icons";
+import { useState } from "react";
 
 interface Message {
   id: number;
@@ -60,12 +62,73 @@ const messages: Message[] = [
 ];
 
 function MessagesPreview() {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("All Messages");
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleOptionClick = (option: string) => {
+    setSelectedOption(option);
+    setIsDropdownOpen(false); // Close the dropdown after selecting an option
+  };
+
   return (
     <div className="max-w-md mx-auto bg-white overflow-hidden">
-      <div className="flex justify-between items-center p-2 border-b">
-        <h1 className="text-lg font-semibold">All Messages</h1>
+      {/* Header with Dropdown */}
+      <div className="flex justify-between items-center p-2 border-b relative">
+        <div className="flex items-center">
+          <h1 className="text-lg font-semibold">{selectedOption}</h1>
+          <button onClick={toggleDropdown} className="ml-2 focus:outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 text-gray-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Dropdown Menu */}
+        {isDropdownOpen && (
+          <div className="absolute top-10 right-0 bg-white shadow-md rounded-lg overflow-hidden z-10 w-40">
+            <ul>
+              <li
+                onClick={() => handleOptionClick("All Messages")}
+                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+              >
+                All Messages
+              </li>
+              <li
+                onClick={() => handleOptionClick("Unread")}
+                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+              >
+                Unread
+              </li>
+              <li
+                onClick={() => handleOptionClick("Starred")}
+                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+              >
+                Starred
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {/* Three Dots Icon */}
         <ThreeDotsVertical className="text-gray-500 w-6 h-6" />
       </div>
+
+      {/* Search Bar */}
       <div className="p-2">
         <div className="relative">
           <input
@@ -76,6 +139,8 @@ function MessagesPreview() {
           <Search className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
         </div>
       </div>
+
+      {/* Messages List */}
       <div>
         {messages.map((msg) => (
           <div
@@ -92,7 +157,7 @@ function MessagesPreview() {
             <div className="ml-4 flex-1">
               <div className="flex justify-between items-center">
                 <h2 className="text-sm font-semibold">{msg.name}</h2>
-                <Star className="text-blue-500 w-5 h-5" />
+                <Star className="text-blue- 500 w-5 h-5" />
               </div>
               <p className="text-sm text-gray-600">{msg.message}</p>
               <div className="flex items-center text-xs text-gray-400 mt-1">
