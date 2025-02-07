@@ -11,7 +11,7 @@ import {
 
 function Sidebar() {
   return (
-    <div className="w-52 h-screen bg-gray-50">
+    <div className="w-44  bg-gray-50 flex flex-col">
       <div className="flex items-center justify-center py-6">
         <Image
           src="/Logo.jpg"
