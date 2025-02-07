@@ -50,8 +50,8 @@ const Header: NextPage<HeaderProps> = ({ children }) => {
           <Image
             src="/self.jpg"
             alt="Profile picture of Ammi Watts"
-            width={32}
-            height={32}
+            width={30}
+            height={30}
             className="rounded-lg"
           />
         </div>

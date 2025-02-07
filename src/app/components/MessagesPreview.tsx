@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Star, Search, ThreeDotsVertical } from "react-bootstrap-icons";
+import { Star, Search, ThreeDotsVertical, ClockFill } from "react-bootstrap-icons";
 import { useState } from "react";
 
 interface Message {
@@ -57,7 +57,7 @@ const messages: Message[] = [
     time: "05:30 PM",
     date: "Today",
     img: "/self.jpg",
-    alt: "Profile picture of Mary Friend",
+    alt: "Profile picture of Mary Freund",
   },
 ];
 
@@ -75,12 +75,16 @@ function MessagesPreview() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white overflow-hidden">
+    <div className="max-w-md mx-auto bg-white overflow-hidden shadow-sm rounded-lg sm:max-w-full">
       {/* Header with Dropdown */}
-      <div className="flex justify-between items-center p-2 border-b relative">
+      <div className="flex justify-between items-center p-4 border-b relative">
         <div className="flex items-center">
           <h1 className="text-lg font-semibold">{selectedOption}</h1>
-          <button onClick={toggleDropdown} className="ml-2 focus:outline-none">
+          <button
+            onClick={toggleDropdown}
+            className="ml-2 focus:outline-none"
+            aria-label="Toggle dropdown"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4 text-gray-500"
@@ -97,10 +101,9 @@ function MessagesPreview() {
             </svg>
           </button>
         </div>
-
         {/* Dropdown Menu */}
         {isDropdownOpen && (
-          <div className="absolute top-10 right-0 bg-white shadow-md rounded-lg overflow-hidden z-10 w-40">
+          <div className="absolute top-12 left-2 bg-white shadow-md rounded-lg overflow-hidden z-10 w-40">
             <ul>
               <li
                 onClick={() => handleOptionClick("All Messages")}
@@ -123,13 +126,12 @@ function MessagesPreview() {
             </ul>
           </div>
         )}
-
         {/* Three Dots Icon */}
-        <ThreeDotsVertical className="text-gray-500 w-6 h-6" />
+        <ThreeDotsVertical className="text-gray-500 w-6 h-6 cursor-pointer" />
       </div>
 
       {/* Search Bar */}
-      <div className="p-2">
+      <div className="p-2 border-b">
         <div className="relative">
           <input
             type="text"
@@ -141,27 +143,27 @@ function MessagesPreview() {
       </div>
 
       {/* Messages List */}
-      <div>
+      <div className="overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-250px)]">
         {messages.map((msg) => (
           <div
             key={msg.id}
-            className="flex items-center p-4 border-b hover:bg-gray-100"
+            className="flex items-center p-2 border-b hover:bg-gray-50 transition-colors duration-200"
           >
             <Image
               src={msg.img}
               alt={msg.alt}
-              width={50}
-              height={50}
+              width={30}
+              height={30}
               className="rounded-full"
             />
             <div className="ml-4 flex-1">
               <div className="flex justify-between items-center">
                 <h2 className="text-sm font-semibold">{msg.name}</h2>
-                <Star className="text-blue- 500 w-5 h-5" />
+                <Star className="text-blue-500 w-4 h-4 cursor-pointer hover:text-blue-600" />
               </div>
-              <p className="text-sm text-gray-600">{msg.message}</p>
+              <p className="text-sm text-gray-600 mt-1">{msg.message}</p>
               <div className="flex items-center text-xs text-gray-400 mt-1">
-                <i className="fas fa-circle text-blue-500 mr-1"></i>
+                <ClockFill className="mr-1 w-3 h-3" />
                 <span>{msg.date}</span>
                 <span className="mx-1">|</span>
                 <span>{msg.time}</span>
