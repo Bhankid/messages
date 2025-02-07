@@ -52,7 +52,7 @@ const messages: Message[] = [
   },
   {
     id: 5,
-    name: "Mary Freund",
+    name: "Mary Friend",
     message: "Hey! Did you finish the Hi-FI wireframes for flora app design?",
     time: "05:30 PM",
     date: "Today",
@@ -75,7 +75,7 @@ function MessagesPreview() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white overflow-hidden shadow-sm rounded-lg sm:max-w-full">
+    <div className="max-w-md mx-auto max-h-screen bg-white overflow-hidden shadow-sm rounded-lg sm:max-w-full">
       {/* Header with Dropdown */}
       <div className="flex justify-between items-center p-4 border-b relative">
         <div className="flex items-center">
