@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: NextPage<HeaderProps> = ({ children }) => {
   return (
-    <div className="flex items-center justify-between p-4 bg-white shadow-md">
+    <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white shadow-md">
       {/* Left Section */}
       <div className="flex items-center space-x-2">
         <h1 className="text-xl font-semibold">Messages</h1>
