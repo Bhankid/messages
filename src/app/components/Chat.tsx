@@ -59,7 +59,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
 
 const Chat: React.FC = () => {
   return (
-    <div className="p-4 h-full overflow-y-auto bg-gray-50">
+    <div className="p-2 h-full overflow-y-auto bg-gray-50">
       <div className="text-center text-gray-500 text-xs mb-4">
         Today | 06:32 PM
       </div>

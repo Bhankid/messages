@@ -75,7 +75,7 @@ function MessagesPreview() {
   };
 
   return (
-    <div className="max-w-md mx-auto max-h-screen bg-white overflow-hidden shadow-sm rounded-lg sm:max-w-full">
+    <div className="max-w-2xl w-full max-h-screen bg-white overflow-hidden shadow-sm rounded-lg sm:max-w-full ml-[-2rem]">
       {/* Header with Dropdown */}
       <div className="flex justify-between items-center p-4 border-b relative">
         <div className="flex items-center">

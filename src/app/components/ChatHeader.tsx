@@ -15,9 +15,9 @@ function ChatHeader() {
         <span className="ml-2 text-gray-800">Ammi Watts</span>
       </div>
       <div className="flex items-center space-x-4">
-        <Star className="text-blue-500 w-5 h-5" />
-        <Search className="text-gray-600 w-5 h-5" />
-        <ThreeDotsVertical className="text-gray-600 w-6 h-6" />
+        <Star className="text-blue-500 w-4 h-4" />
+        <Search className="text-gray-600 w-4 h-4" />
+        <ThreeDotsVertical className="text-gray-600 w-5 h-5" />
       </div>
     </div>
   );
