@@ -1,16 +1,18 @@
+import { ChevronLeft, ChevronRight, Plus, Bell } from "react-bootstrap-icons";
+
 const ScheduleCalendar = () => {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-lg w-80">
+    <div className="bg-white p-2 rounded-lg shadow-md flex-[1] flex-col">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-lg font-semibold">March, 2020</h1>
-        <div className="flex space-x-2">
-          <button className="p-2 bg-gray-200 rounded-full">
-            <i className="fas fa-chevron-left"></i>
-          </button>
-          <button className="p-2 bg-gray-200 rounded-full">
-            <i className="fas fa-chevron-right"></i>
-          </button>
-        </div>
+        <div className="flex items-center">
+        <button className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-l-md">
+          <ChevronLeft className="text-gray-500" />
+        </button>
+        <button className="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-r-md">
+          <ChevronRight className="text-white" />
+        </button>
+      </div>
       </div>
       <div className="bg-gray-100 p-4 rounded-lg mb-4">
         <div className="grid grid-cols-7 text-center text-sm text-gray-500 mb-2">
@@ -36,7 +38,7 @@ const ScheduleCalendar = () => {
         </div>
       </div>
       <button className="w-full bg-red-500 text-white py-2 rounded-lg flex items-center justify-center mb-4">
-        <i className="fas fa-plus mr-2"></i>
+        <Plus className="text-white text-3xl bg-red-200 rounded-lg mr-2" />
         Add New Task
       </button>
       <div className="flex justify-between mb-4">
@@ -55,7 +57,7 @@ const ScheduleCalendar = () => {
       <div className="bg-gray-100 p-4 rounded-lg">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-sm font-semibold">Reminders</h2>
-          <i className="fas fa-bell text-blue-500"></i>
+          <Bell className="text-blue-500" />
         </div>
         {[...Array(3)].map((_, i) => (
           <div key={i} className="flex justify-between items-center mb-2">

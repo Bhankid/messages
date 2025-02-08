@@ -1,3 +1,5 @@
+import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
+
 function ScheduleHeader() {
   return (
     <div className="flex items-center justify-between p-4 bg-white shadow-sm">
@@ -8,10 +10,10 @@ function ScheduleHeader() {
       </div>
       <div className="flex items-center">
         <button className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-l-md">
-          <i className="fas fa-chevron-left"></i>
+          <ChevronLeft className="text-gray-500" />
         </button>
         <button className="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-r-md">
-          <i className="fas fa-chevron-right"></i>
+          <ChevronRight className="text-white" />
         </button>
       </div>
     </div>

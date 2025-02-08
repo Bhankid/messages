@@ -1,7 +1,7 @@
 
 const Scheduler = () => {
   return (
-    <div className="p-4">
+    <div className="p-2 flex-[3] flex-col shadow-md">
       <div className="overflow-x-auto">
         <table className="min-w-full border-collapse">
           <thead>
