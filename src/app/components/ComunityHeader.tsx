@@ -5,7 +5,7 @@ import React from "react";
 
 const CommunityHeader: React.FC = () => {
   return (
-    <div className="flex items-center p-4 bg-white shadow-md">
+    <div className="flex items-center p-4 bg-white shadow-sm border-b border-gray-300">
       {/* Title Section */}
       <div className="flex items-center">
         <span className="text-lg font-medium">Design Task</span>
@@ -35,26 +35,26 @@ const CommunityHeader: React.FC = () => {
           alt="Avatar 1"
           width={32}
           height={32}
-          className="rounded-full mx-1"
+          className="rounded-lg mx-1"
         />
         <Image
           src="/Rectangle 3.png"
           alt="Avatar 2"
           width={32}
           height={32}
-          className="rounded-full mx-1"
+          className="rounded-lg mx-1"
         />
         <Image
           src="/Rectangle 4.png"
           alt="Avatar 3"
           width={32}
           height={32}
-          className="rounded-full mx-1"
+          className="rounded-lg mx-1"
         />
 
         {/* Add Avatar Button */}
-        <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center mx-1">
-          <Plus className="text-white" />
+        <div className="w-8 h-8 rounded-lg bg-pink-500 flex items-center justify-center mx-1">
+          <Plus className="text-white text-2xl" />
         </div>
       </div>
 
