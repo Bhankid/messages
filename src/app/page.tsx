@@ -1,43 +1,34 @@
-import ChatHeader from "../app/components/ChatHeader";
-import MessagesPreview from "../app/components/MessagesPreview";
-import Chat from "../app/components/Chat";
-import ChatInput from "../app/components/ChatInput";
+"use client";
+
+import { useState } from "react";
 import Sidebar from "../app/components/Sidebar";
 import Header from "../app/components/Header";
+import MessageSection from "../app/components/MessageSection";
+import CommunitySection from "../app/components/CommunitySection";
+// import JobsSection from "../components/JobsSection";
+import ScheduleSection from "../app/components/ScheduleSection";
+// import AnalysisSection from "../components/AnalysisSection";
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState("messages");
+
   return (
     <div className="flex h-screen">
       {/* Sidebar - Fixed on the Left */}
-      <Sidebar />
+      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content Area */}
       <div className="flex flex-col flex-1">
         {/* Header - Fixed on Top */}
         <Header />
 
-        {/* Chat Section */}
-        <div className="flex flex-1">
-          {/* Messages Preview - Left Side */}
-          <div className="w-1/4 bg-white border-r p-4">
-            <MessagesPreview />
-          </div>
-
-          {/* Chat Area - Right Side */}
-          <div className="flex flex-col flex-1">
-            {/* Chat Header Below Main Header */}
-            <ChatHeader />
-
-            {/* Chat Messages */}
-            <div className="flex-1 overflow-y-auto p-2">
-              <Chat />
-            </div>
-
-            {/* Chat Input at the Bottom */}
-            <div className="p-2">
-              <ChatInput />
-            </div>
-          </div>
+        {/* Dynamic Content Based on Active Tab */}
+        <div className="p-6">
+          {activeTab === "messages" && <MessageSection />}
+          {activeTab === "community" && <CommunitySection />}
+          {/* {activeTab === "jobs" && <JobsSection />} */}
+          {activeTab === "schedule" && <ScheduleSection />}
+          {/* {activeTab === "analysis" && <AnalysisSection />} */}
         </div>
       </div>
     </div>

@@ -3,13 +3,12 @@ import { Search, Plus, Bell, ThreeDotsVertical } from "react-bootstrap-icons";
 import Image from "next/image";
 
 interface HeaderProps {
-  // Add any props you want to pass to the Header component
   children?: React.ReactNode;
 }
 
 const Header: NextPage<HeaderProps> = ({ children }) => {
   return (
-    <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white shadow-md">
+    <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white shadow-sm">
       {/* Left Section */}
       <div className="flex items-center space-x-2">
         <h1 className="text-xl font-semibold">Messages</h1>
