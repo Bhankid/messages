@@ -38,7 +38,7 @@ const ScheduleCalendar = () => {
       </div>
 
       {/* Calendar */}
-      <div className="bg-gray-50 p-2 rounded-lg w-64 mb-4">
+      <div className="bg-gray-100 p-2 rounded-lg w-64 mb-4">
         <Calendar
           onChange={(value) => value instanceof Date && setDate(value)}
           value={date}
