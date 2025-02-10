@@ -5,7 +5,7 @@ import Sidebar from "../app/components/Sidebar";
 import Header from "../app/components/Header";
 import MessageSection from "../app/components/MessageSection";
 import CommunitySection from "../app/components/CommunitySection";
-// import JobsSection from "../components/JobsSection";
+import Jobs from "@/app/components/Jobs";
 import ScheduleSection from "../app/components/ScheduleSection";
 // import AnalysisSection from "../components/AnalysisSection";
 
@@ -26,7 +26,7 @@ export default function Home() {
         <div className="p-6">
           {activeTab === "messages" && <MessageSection />}
           {activeTab === "community" && <CommunitySection />}
-          {/* {activeTab === "jobs" && <JobsSection />} */}
+          {activeTab === "jobs" && <Jobs />}
           {activeTab === "schedule" && <ScheduleSection />}
           {/* {activeTab === "analysis" && <AnalysisSection />} */}
         </div>
