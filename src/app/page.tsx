@@ -7,6 +7,7 @@ import MessageSection from "../app/components/MessageSection";
 import CommunitySection from "../app/components/CommunitySection";
 import Jobs from "@/app/components/Jobs";
 import ScheduleSection from "../app/components/ScheduleSection";
+import Dashboard from "./components/Dashboard";
 // import AnalysisSection from "../components/AnalysisSection";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
 
         {/* Dynamic Content Based on Active Tab */}
         <div className="p-6">
+          {activeTab === "dashboard" && <Dashboard/> }
           {activeTab === "messages" && <MessageSection />}
           {activeTab === "community" && <CommunitySection />}
           {activeTab === "jobs" && <Jobs />}
