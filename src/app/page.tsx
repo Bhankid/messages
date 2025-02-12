@@ -1,6 +1,5 @@
 "use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../app/components/Sidebar";
 import Header from "../app/components/Header";
 import MessageSection from "../app/components/MessageSection";
@@ -8,10 +7,22 @@ import CommunitySection from "../app/components/CommunitySection";
 import Jobs from "@/app/components/Jobs";
 import ScheduleSection from "../app/components/ScheduleSection";
 import Dashboard from "./components/Dashboard";
-// import AnalysisSection from "../components/AnalysisSection";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("messages");
+  // Initialize state for the active tab
+  const [activeTab, setActiveTab] = useState<string>(() => {
+    // Retrieve the active tab from localStorage or default to "dashboard"
+    if (typeof window !== "undefined") {
+      const savedTab = localStorage.getItem("activeTab");
+      return savedTab || "dashboard";
+    }
+    return "dashboard";
+  });
+
+  // Update localStorage whenever the active tab changes
+  useEffect(() => {
+    localStorage.setItem("activeTab", activeTab);
+  }, [activeTab]);
 
   return (
     <div className="flex h-screen">
@@ -24,8 +35,8 @@ export default function Home() {
         <Header />
 
         {/* Dynamic Content Based on Active Tab */}
-        <div className="p-6">
-          {activeTab === "dashboard" && <Dashboard/> }
+        <div className="p-6 overflow-y-auto">
+          {activeTab === "dashboard" && <Dashboard />}
           {activeTab === "messages" && <MessageSection />}
           {activeTab === "community" && <CommunitySection />}
           {activeTab === "jobs" && <Jobs />}

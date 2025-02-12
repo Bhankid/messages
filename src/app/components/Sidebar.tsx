@@ -8,7 +8,7 @@ import {
   FaComments,
   FaChartLine,
   FaSignOutAlt,
-} from "react-icons/fa"; // Import icons from react-icons/fa
+} from "react-icons/fa"; 
 import React from "react";
 
 interface SidebarProps {
