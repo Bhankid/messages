@@ -11,6 +11,8 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import TaskCards from "./TaskCards";
+import TaskDetailsTable from "./TaskDetailsTable";
 
 interface TaskData {
   month: string;
@@ -40,35 +42,25 @@ const pieData = [
 const COLORS = ["#FF8042", "#00C49F", "#FFBB28", "#8884d8"];
 
 const Dashboard: React.FC = () => {
+  // Extract counts for TaskCards
+  const pendingCount = taskData[taskData.length - 1].pending;
+  const inProgressCount = taskData[taskData.length - 1].inProgress;
+  const inReviewCount = taskData[taskData.length - 1].inReview;
+  const completedCount = taskData[taskData.length - 1].completed;
+
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-50 min-h-screen">
       {/* Greeting Section */}
       <h1 className="text-3xl font-bold text-gray-800 mb-4">Hi, Fred</h1>
       <p className="text-gray-600 mb-8">This is your task summary so far</p>
 
-      {/* Stats Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        {/* Pending Tasks */}
-        <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center">
-          <span className="text-4xl font-bold text-red-500">20</span>
-          <p className="text-gray-600 mt-2">Pending</p>
-        </div>
-        {/* InProgress Tasks */}
-        <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center">
-          <span className="text-4xl font-bold text-blue-500">60</span>
-          <p className="text-gray-600 mt-2">In Progress</p>
-        </div>
-        {/* InReview Tasks */}
-        <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center">
-          <span className="text-4xl font-bold text-yellow-500">50</span>
-          <p className="text-gray-600 mt-2">In Review</p>
-        </div>
-        {/* Completed Tasks */}
-        <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center">
-          <span className="text-4xl font-bold text-green-500">40</span>
-          <p className="text-gray-600 mt-2">Completed</p>
-        </div>
-      </div>
+      {/* Task Cards Section */}
+      <TaskCards
+        pending={pendingCount}
+        inProgress={inProgressCount}
+        inReview={inReviewCount}
+        completed={completedCount}
+      />
 
       {/* Line Chart Section */}
       <div className="bg-white p-6 rounded-lg shadow-lg mb-8">
@@ -113,7 +105,7 @@ const Dashboard: React.FC = () => {
         </LineChart>
       </div>
 
-      {/* Donut Chart Section */}
+      {/* Donut Chart and Task Details Table Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Donut Chart */}
         <div className="bg-white p-6 rounded-lg shadow-lg">
@@ -147,33 +139,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Task Details Table */}
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
-            Task Details
-          </h2>
-          <table className="w-full text-left">
-            <thead>
-              <tr>
-                <th className="py-2">Month</th>
-                <th className="py-2">Pending</th>
-                <th className="py-2">In Progress</th>
-                <th className="py-2">In Review</th>
-                <th className="py-2">Completed</th>
-              </tr>
-            </thead>
-            <tbody>
-              {taskData.map((task, index) => (
-                <tr key={index} className="border-t">
-                  <td className="py-2">{task.month}</td>
-                  <td className="py-2">{task.pending}</td>
-                  <td className="py-2">{task.inProgress}</td>
-                  <td className="py-2">{task.inReview}</td>
-                  <td className="py-2">{task.completed}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <TaskDetailsTable data={taskData} />
       </div>
     </div>
   );
