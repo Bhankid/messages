@@ -106,36 +106,42 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Donut Chart and Task Details Table Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
         {/* Donut Chart */}
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+        <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
             Task Distribution
           </h2>
-          <PieChart width={400} height={300}>
-            <Pie
-              data={pieData}
-              cx="50%"
-              cy="50%"
-              innerRadius={60}
-              outerRadius={100}
-              fill="#8884d8"
-              paddingAngle={2}
-              dataKey="value"
-              label={({ name, percent }) =>
-                `${name}: ${(percent * 100).toFixed(0)}%`
-              }
-            >
-              {pieData.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
+          <div className="w-full flex justify-center">
+            <PieChart width={450} height={350}>
+              <Pie
+                data={pieData}
+                cx="50%"
+                cy="50%"
+                innerRadius={70}
+                outerRadius={120}
+                fill="#8884d8"
+                paddingAngle={3}
+                dataKey="value"
+                label={({ name, percent }) =>
+                  `${name}: ${(percent * 100).toFixed(0)}%`
+                }
+              >
+                {pieData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend
+                layout="horizontal"
+                align="center"
+                verticalAlign="bottom"
+              />
+            </PieChart>
+          </div>
         </div>
 
         {/* Task Details Table */}
